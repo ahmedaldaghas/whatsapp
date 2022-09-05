@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "AKAA",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.11",
+    "dotenv": "^16.0.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.7",
+    "pm2": "^5.2.0",
+    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#fix-buttons-list"
+  }
+}
