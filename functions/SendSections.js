@@ -24,7 +24,7 @@ const sections = async function section(subject) {
               if (a.link) rows += `Link: https://chat.whatsapp.com/${a.link}\n`;
               else rows += "There no group please make one and add it 🥺🥺\n";
             });
-            rows += `\n\nTo add new group:\n\n*#${subject_name} SEC LINK*\n\n*IF you want to add ALL SEC group replace SEC with 1\n\n If there is a missing section or there is error section \nAkaa: https://wa.me/97333959459\nAli Redha: https://wa.me/97338406875*`;
+            rows += `\n\nTo add new group:\n\n*#${subject_name} SEC LINK*\n\n*IF you want to add ALL SEC group replace SEC with 0*\n\n If there is a missing section or there is error section \nAkaa: https://wa.me/97333959459\nAli Redha: https://wa.me/97338406875*`;
             return err ? reject(err) : resolve(rows);
           }
         );
