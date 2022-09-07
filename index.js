@@ -37,7 +37,7 @@ client.on('message', async msg => {
                 client.sendMessage(msg.from, await selectChat(msg.body, msg.from), {linkPreview: false});
                 break;
             case 'e2e_notification':
-                client.sendMessage(msg.from,"Hi sorry... try againg now");
+                client.sendMessage(msg.from,"Hello you have been registered Successfully \n\n please send a number now from 1 to 9");
                 break;
         }
         // console.log(msg.type, msg.body);
