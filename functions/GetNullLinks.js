@@ -12,7 +12,7 @@ const getNullLinks = function getNullLinks(who) {
             con.query(
                 "SELECT a.subject, s.sec FROM sections s, subjects a WHERE s.idsc=a.id  AND s.id NOT IN(SELECT idsec FROM links);",
                 async (err, result) => {
-                  let g=`${new Date().toLocaleString()}\n`;
+                  let g=`${new Date().toLocaleString()}; *#${result.length} sections need your help :)*\n`;
                   result.forEach((subject,i) => {
                     if(i===0){
                         g+=`${subject.subject}: ${subject.sec}`;
