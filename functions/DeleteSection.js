@@ -17,13 +17,14 @@ const deleteSection = function deleteSection(msg, who) {
           let x = msg[0].slice(3);
           let y = msg[1];
           con.query(
-            "SET @count = (SELECT id FROM sections WHERE idsc=(SELECT CASE WHEN link IS null THEN id ELSE link END AS a FROM subjects WHERE SUBJECT=?) AND sec=?);DELETE s,b FROM links s, sections b WHERE idsec=@count AND b.id=@COUNT;",
+            "SET @count = (SELECT id FROM sections WHERE idsc=(SELECT CASE WHEN link IS null THEN id ELSE link END AS a FROM subjects WHERE SUBJECT=?) AND sec=?);DELETE FROM links WHERE idsec=@COUNT LIMIT 1;DELETE FROM sections WHERE id=@COUNT LIMIT 1;",
             [x, y],
             async (err, result) => {
               if (err) return reject(err);
               else if(result.affectedRows === 2 || result.affectedRows === 1) return resolve("DELETED");
               else if(result.affectedRows === 0) return resolve("NOT DELETED");
-              else return resolve("ERROR!!!!!");
+              else if(result.affectedRows > 2) return resolve(`ERROR!!!!!   ${resolve.affectedRows}`);
+              else return resolve("NOT FOUND");
             
             }
           );

@@ -5,5 +5,6 @@ const con = mysql.createPool({
   user: process.env.USER,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
+  multipleStatements: true
 });
 exports.con = con;
