@@ -21,11 +21,7 @@ const deleteSection = function deleteSection(msg, who) {
             [x, y],
             async (err, result) => {
               if (err) return reject(err);
-              else if(result.affectedRows === 2 || result.affectedRows === 1) return resolve("DELETED");
-              else if(result.affectedRows === 0) return resolve("NOT DELETED");
-              else if(result.affectedRows > 2) return resolve(`ERROR!!!!!   ${resolve.affectedRows}`);
-              else return resolve("NOT FOUND");
-            
+              else return resolve("DELETED-I hope");
             }
           );
         } else {
