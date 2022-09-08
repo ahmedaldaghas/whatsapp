@@ -1,4 +1,5 @@
 const { con } = require("./connectionDB");
+const { select } = require("./SendColleges");
 
 const addAdmin = function addAdmin(msg, who) {
   let x = msg.slice(2) + "@c.us";
@@ -20,7 +21,7 @@ const addAdmin = function addAdmin(msg, who) {
             }
           );
         } else {
-          return resolve("FAIL");
+          return resolve(await select);
         }
       }
     );

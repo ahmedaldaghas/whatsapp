@@ -1,4 +1,5 @@
 const { con } = require("./connectionDB");
+const { select } = require("./SendColleges");
 
 const deleteLink = function deleteLink(msg, who) {
   return new Promise(async function (resolve, reject) {
@@ -11,7 +12,7 @@ const deleteLink = function deleteLink(msg, who) {
           msg = msg.split(" ");
           if (msg.length !== 2)
             return resolve(
-              "*Sorry*\n\n*But your format is not correct*\n\n*!ITCSxxx SEC*\n\n*make sure of the spacing*"
+              "*Sorry*\n\n*But your format is not correct*\n\n*!dITCSxxx SEC*\n\n*make sure of the spacing*"
             );
           let x = msg[0].slice(2);
           let y = msg[1];
@@ -41,7 +42,7 @@ const deleteLink = function deleteLink(msg, who) {
             }
           );
         } else {
-          return resolve("Sorry you are not an admin");
+          return resolve(await select);
         }
       }
     );
