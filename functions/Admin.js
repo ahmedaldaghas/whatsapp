@@ -12,7 +12,7 @@ const admin = function admin(msg, from) {
       else if (/^(!a)/.test(msg)) return resolve(await addAdmin(msg, from));
       else if (/^(!-s)/.test(msg)) return resolve(await deleteSection(msg, from));
       else if (/^(!\+s)/.test(msg)) return resolve(await addSection(msg, from));
-      else if (/^(!n)$/.test(msg)) return resolve(await getNullLinks());
+      else if (/^(!n)$/.test(msg)) return resolve(await getNullLinks(from));
       else return resolve(await select);
     } catch (e) {
       return reject(e);

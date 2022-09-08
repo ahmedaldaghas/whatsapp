@@ -1,7 +1,7 @@
 const { con } = require("./connectionDB");
 const { select } = require("./SendColleges");
 
-const getNullLinks = function getNullLinks(msg, who) {
+const getNullLinks = function getNullLinks(who) {
   return new Promise(async function (resolve, reject) {
     con.query(
       "SELECT * FROM ADMINS WHERE ADMIN=?;",
