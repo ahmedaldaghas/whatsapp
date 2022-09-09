@@ -1,7 +1,7 @@
 const { con } = require("./connectionDB");
 const { select } = require("./SendColleges");
 
-const getNullLinks = function getNullLinks(who) {
+const getNullLinks = function getNullLinks(msg,who) {
   return new Promise(async function (resolve, reject) {
     con.query(
       "SELECT * FROM ADMINS WHERE ADMIN=?;",
@@ -9,8 +9,9 @@ const getNullLinks = function getNullLinks(who) {
       async (err, result) => {
         if (err) return reject(err);
         if (result.length === 1) {
+          let x = msg.slice(2);
             con.query(
-                "SELECT a.subject, s.sec FROM sections s, subjects a WHERE s.idsc=a.id  AND s.id NOT IN(SELECT idsec FROM links);",
+                "SELECT a.subject, s.sec FROM sections s, subjects a WHERE s.idsc=a.id  AND s.id NOT IN(SELECT idsec FROM links) AND a.dep=?;",[x],
                 async (err, result) => {
                   let g=`${new Date().toLocaleString()}; *#${result.length} sections need your help :)*\n`;
                   result.forEach((subject,i) => {
