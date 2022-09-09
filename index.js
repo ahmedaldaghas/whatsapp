@@ -46,6 +46,9 @@ client.on("message", async (msg) => {
           "Hello you have been registered Successfully \n\n please send a number now from 1 to 9"
         );
         break;
+      default:
+        console.log(msg.type);
+        break;
     }
     // console.log(msg.type, msg.body);
   } catch (err) {
