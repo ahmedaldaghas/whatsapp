@@ -41,6 +41,7 @@ client.on("message", async (msg) => {
         });
         break;
       case "e2e_notification":
+      case "protocol":
         client.sendMessage(
           msg.from,
           "Hello you have been registered Successfully \n\n please send a number now from 1 to 9"
