@@ -28,7 +28,10 @@ client.on("ready", () => {
 });
 //delete require.cache[require.resolve("./functions/SendButtons")]
 client.on("message", async (msg) => {
-  if(!msg.from.startsWith("973") && !msg.from.startsWith("966") && !msg.from !== "381611360298@c.us") client.sendMessage(msg.from,"The bot only support +973 and +966");
+  if(!msg.from.startsWith("973") && !msg.from.startsWith("966") && !msg.from !== "381611360298@c.us"){
+    client.sendMessage(msg.from,"The bot only support +973 and +966");
+    return;
+  }
   try {
     switch (msg.type) {
       case "list_response":
