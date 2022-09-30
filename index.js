@@ -18,7 +18,7 @@ const args = [
 
 const client = new Client({
   authStrategy: new LocalAuth(),
-  puppeteer: { args: args, headless: true },
+  puppeteer: { args: args, headless: false },
 });
 
 client.initialize().catch(() => pm2.restart("inedx"));
