@@ -2,6 +2,7 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const { selectLists } = require("./functions/ResponList");
 const { selectChat } = require("./functions/ResponChat");
 const pm2 = require("pm2");
+const qrcode = require("qrcode-terminal");
 
 require("dotenv").config();
 
@@ -16,12 +17,18 @@ const args = [
   "--disable-gpu",
 ];
 
+
+
 const client = new Client({
   authStrategy: new LocalAuth(),
-  puppeteer: { args: args, headless: false },
+  puppeteer: { args: args, headless: true },
 });
 
 client.initialize().catch(() => pm2.restart("inedx"));
+
+client.on("qr", (qr) => {
+  qrcode.generate(qr, { small: true });
+});
 
 client.on("ready", () => {
   console.log("Client is ready!");
@@ -32,6 +39,8 @@ client.on("message", async (msg) => {
   //   client.sendMessage(msg.from,"The bot only support +973 and +966");
   //   return;
   // }
+  
+  if(!msg.from.startsWith("97333959459")) return;
   try {
     switch (msg.type) {
       case "list_response":
@@ -40,7 +49,7 @@ client.on("message", async (msg) => {
         });
         break;
       case "chat":
-        client.sendMessage(msg.from, await selectChat(msg.body, msg.from), {
+        client.sendMessage(msg.from, await selectChat(msg.body, msg.from, client), {
           linkPreview: false,
         });
         break;
