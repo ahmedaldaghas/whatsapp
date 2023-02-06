@@ -96,6 +96,7 @@ const updateSections = function updateSections(who) {
                                                         );
                                                     }
                                                     else {
+                                                        var x = result.message.split(' ').filter(element => element === '0' || Number(element)).map(Number)
                                                         con.query(
                                                             "INSERT INTO sections(idsc,sec) VALUES " + g.slice(0, -1) + " ON DUPLICATE KEY UPDATE id=id",
                                                             (err, result) => {
@@ -106,9 +107,10 @@ const updateSections = function updateSections(who) {
                                                                     );
                                                                 }
                                                                 else {
+                                                                    var y = result.message.split(' ').filter(element => element === '0' || Number(element)).map(Number)
                                                                     con.query("SET FOREIGN_KEY_CHECKS=1;")
                                                                     if (dep.i == 751) {
-                                                                        return resolve("Updated")
+                                                                        return resolve(`Updated:\n${x[0] - x[1]} Group added\n${y[0] - y[1]} Section added`);
                                                                     }
                                                                 }
                                                             }
